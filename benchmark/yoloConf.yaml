@@ -1,0 +1,21 @@
+yoloConf:
+  model: '../models/yolo4by4.pt'
+  calibration_file: '../data/calibration_files/MIG_Fe55_568V_UQ_240201T105931.CAL.npy'
+  vignetting_map: '../data/calibration_files/MIG_Fe55_568V_UQ_240201T105931.CAL.pkl'
+  png_dir: '../data/pngs'
+  downsample_path: '../data/downsampled_images'
+  outpath: '../data/yolo_outfiles'
+  delete_yolo_output: True #Usually you want False unless you're benchmarking
+  png_threshold: 1.4
+  png_saturation: 4
+  migdal_cut: 'NR_energy > 60 & centroid_dist < 6'
+  GPU: False #set to True if using GPU else False
+  
+downsample:
+  dark_file: '../data/dark/sample_master_dark.npy'
+  data_dir: '../data/image_for_benchmark' #input data directory
+  batch_size: 1 #Size of batches for downsampling
+  num_workers: 2 #number of parallel jobs for batch loading in downsample.py
+  outpath: '../data/downsampled_images' #outpath for downsampled images
+  GPU: False #set to True if using GPU else False
+  png_dir: '../data/pngs'
