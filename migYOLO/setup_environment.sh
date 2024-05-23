@@ -23,15 +23,15 @@ makedirs() {
 
 # Main function
 main() {
-    local zip_file_path="zipped_files.zip"
+    local zip_file_path="data_and_models.zip"
     local extract_to=""
 
     if [ ! -f "$zip_file_path" ]; then
-        echo "Script will not run unless there is a zipped_files.zip file to unzip!"
+        echo "Script will not run unless there is a data_and_models.zip file to unzip!"
         exit 1
     fi
 
-    echo "Unzipping zipped_files.zip"
+    echo "Unzipping data_and_models.zip"
     unzip_directory "$zip_file_path" "$extract_to"
     echo "Done!"
 
@@ -39,8 +39,8 @@ main() {
     makedirs
 
     echo "Moving files"
-    mv "zipped_files/image_for_benchmark/MIG_DD_568V_240201T123221.DATA.98.MTIFF" "data/benchmark/random_benchmark_image/random.MTIFF"
-    mv "zipped_files/high_occupancy/MIG_DD_568V_240201T123221.DATA.124.MTIFF" "data/benchmark/high_occupancy_image/high_occupancy.MTIFF"
+    mv "zipped_files/random_benchmark_image/random.MTIFF" "data/benchmark/random_benchmark_image/random.MTIFF"
+    mv "zipped_files/high_occupancy_image/high_occupancy.MTIFF" "data/benchmark/high_occupancy_image/high_occupancy.MTIFF"
     mv "zipped_files/dark/sample_master_dark.npy" "data/dark/sample_master_dark.npy"
     mv zipped_files/raw_images/* data/raw_images/
     mv zipped_files/models/* models/
