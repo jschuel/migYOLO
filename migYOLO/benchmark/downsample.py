@@ -61,7 +61,7 @@ class CustomDataset(Dataset):
 
 file_paths = []
 for i in range(num_MTIFFs):
-    file_paths.append(conf['data_dir']+'/MIG_DD_568V_240201T123221.DATA.%s.MTIFF'%(i))
+    file_paths.append(conf['data_dir']+'/%s.%s.MTIFF'%(os.path.split(conf['data_dir'])[1],i))
 
 dark = np.load(conf['dark_file'])
 dataset = CustomDataset(file_paths,dark)

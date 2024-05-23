@@ -61,6 +61,7 @@ class yolo():
 
         self.tmp_png_dir    = '../data/benchmark/pngs/'+self.fname
         self.downsample_file = '../data/benchmark/downsampled_images/'+self.fname
+        
         print(self.tmp_png_dir)
         self.png_threshold  = png_threshold #threshold for fixed dynamic range pngs
         self.png_saturation = png_saturation #saturation limit for fixed dynamic range pngs

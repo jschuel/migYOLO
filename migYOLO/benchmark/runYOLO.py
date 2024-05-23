@@ -21,6 +21,8 @@ def is_screen_running(screen_name):
 
 '''Save timestamps each time a file s processed to the "timestamp/" directory'''
 def save_timestamp():
+    if not os.path.exists('timestamps'):
+        os.makedirs('timestamps')
     fname = 'timestamps/%s.txt'%(time.time())
     with open(fname, "w") as f:
         f.write(str(time.time()))
@@ -29,6 +31,10 @@ def main():
     '''Read configuration from benchmarkConf.yaml'''
     conf = read_config_file('benchmarkConf.yaml')['yoloConf']
     model = YOLO(conf['model'])
+    if not os.path.exists(conf['downsample_path']):
+        os.makedirs(conf['downsample_path'])
+    if not os.path.exists(conf['png_dir']):
+        os.makedirs(conf['png_dir'])
     '''save initial timestamp'''
     save_timestamp()
 
