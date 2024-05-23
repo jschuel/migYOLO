@@ -44,8 +44,8 @@ main() {
     mv zipped_files/models/* models/
     
     echo "Cleaning up"
-    #rm "$zip_file_path"
-    #rm -rf "zipped_files/"
+    rm "$zip_file_path"
+    rm -rf "zipped_files/"
 
     echo "SUCCESS!"
 }
