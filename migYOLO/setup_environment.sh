@@ -12,6 +12,7 @@ makedirs() {
     local paths=("data/benchmark/random_benchmark_image/"
                  "data/benchmark/high_occupancy_image/"
                  "data/dark/"
+		 "data/benchmark/raw_images/"
                  "models/")
     for path in "${paths[@]}"; do
         if [ ! -d "$path" ]; then
@@ -41,6 +42,7 @@ main() {
     mv "zipped_files/image_for_benchmark/MIG_DD_568V_240201T123221.DATA.98.MTIFF" "data/benchmark/random_benchmark_image/random.MTIFF"
     mv "zipped_files/high_occupancy/MIG_DD_568V_240201T123221.DATA.124.MTIFF" "data/benchmark/high_occupancy_image/high_occupancy.MTIFF"
     mv "zipped_files/dark/sample_master_dark.npy" "data/dark/sample_master_dark.npy"
+    mv zipped_files/raw_images/* data/raw_images/
     mv zipped_files/models/* models/
     
     echo "Cleaning up"

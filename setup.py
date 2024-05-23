@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='migYOLO',
-    version='0.1.0',
+    version='1.0.0',
     description='Tools for evaluating MIGDAL image data with a pre-trained version of YOLOv8',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
