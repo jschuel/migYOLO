@@ -41,7 +41,7 @@ class group_and_search:
         self.fid['centroidx'] = (self.fid['colmin']+self.fid['colmax'])/2
         self.fid['centroidy'] = (self.fid['rowmin']+self.fid['rowmax'])/2
         #Group the frames with multiple tracks
-        self.grp = self.fid[['original_index','prediction','colmin','colmax','rowmin','rowmax','energy','true_length','centroidx','centroidy']].groupby(['original_index'])[['prediction','colmin','colmax','rowmin','rowmax','energy','true_length','centroidx','centroidy']].agg(list).reset_index()
+        self.grp = self.fid[['original_index','prediction','prob','colmin','colmax','rowmin','rowmax','energy','true_length','centroidx','centroidy']].groupby(['original_index'])[['prediction','prob','colmin','colmax','rowmin','rowmax','energy','true_length','centroidx','centroidy']].agg(list).reset_index()
 
         #Determine intersection over union overlap
         self.grp['IoU'], self.grp['centroid_dist'] = self.compute_overlapping_tracks_and_centroid_distances()
@@ -130,7 +130,7 @@ class group_and_search:
     '''Initial grouping for afterglow and rolling shutter ID'''    
     def group_data(self):
         #self.data = self.data.query('tracks_in_orig_frame > 1')
-        grp = self.data[['original_index','prediction','colmin','colmax','rowmin','rowmax','energy','qmax']].groupby(['original_index'])[['prediction','colmin','colmax','rowmin','rowmax','energy','qmax']].agg(list).reset_index()
+        grp = self.data[['original_index','prediction','prob','colmin','colmax','rowmin','rowmax','energy','qmax']].groupby(['original_index'])[['prediction','prob','colmin','colmax','rowmin','rowmax','energy','qmax']].agg(list).reset_index()
         grp['diff_index'] = grp['original_index'].diff()
         return grp
 
