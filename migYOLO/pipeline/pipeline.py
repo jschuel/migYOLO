@@ -122,7 +122,7 @@ class yolo:
         self.png_saturation = png_saturation
 
         '''Create pngs for YOLO to perform inference on'''
-        pngs = numpy_to_png(self.ims,vmin = png_threshold,vmax = png_saturation)
+        pngs = numpy_to_png(np.log10(self.ims+1),vmin = png_threshold,vmax = png_saturation)
         self.pngs = [Image.open(BytesIO(pngs[i])) for i in range(0,len(self.ims))]
 
         '''Perform YOLO inferece'''
