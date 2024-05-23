@@ -29,8 +29,8 @@ def simple_vignetting_correction(df,vignetting_map_file,calibration_file):
         tmp = df.iloc[i]
         xLogicalPix = np.abs((tmp['col'].mean()-xlogical_pixel_boundaries.mean(axis = 1))).argmin()
         yLogicalPix = np.abs((tmp['row'].mean()-ylogical_pixel_boundaries.mean(axis = 1))).argmin()
-        logicalPixels.append((xLogicalPix,yLogicalPix))
-    df['logicalPixel'] = logicalPixels
+        logical_Pixels.append((xLogicalPix,yLogicalPix))
+    df['logicalPixel'] = logical_Pixels
 
     '''Perform corrections'''
     arr = np.array([vignetting_map[df['logicalPixel'].iloc[i]] for i in range(0,len(df))])
