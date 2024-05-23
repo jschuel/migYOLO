@@ -21,7 +21,7 @@ conf = read_config_file('benchmarkConf.yaml')['downsample']
 batch_size = conf['batch_size']
 
 '''Dataset reads MTIFFs, downsamples and Gaussian smoothes them, and then writes PNGs for each MTIFF frame to be passed into YOLO'''
-class CustomHDFDataset(Dataset):
+class CustomDataset(Dataset):
     def __init__(self, file_paths,darkim):
         self.file_paths = file_paths
         self.darkim = darkim
@@ -64,7 +64,7 @@ for i in range(num_MTIFFs):
     file_paths.append(conf['data_dir']+'/MIG_DD_568V_240201T123221.DATA.%s.MTIFF'%(i))
 
 dark = np.load(conf['dark_file'])
-dataset = CustomHDFDataset(file_paths,dark)
+dataset = CustomDataset(file_paths,dark)
 dataloader = DataLoader(dataset, batch_size=batch_size, num_workers = conf['num_workers'], shuffle=False)
 
 # Now you can iterate over the dataloader to get batches of data
