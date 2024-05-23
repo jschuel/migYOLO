@@ -45,6 +45,6 @@ source setup_environment.sh
 ```
 Running this command will (1) unzip zipped_files.zip, (2) move all of its contents to their appropriate directories, and (3) remove zipped_files.zip
 
-And than's it!
+h. Navigate to the `tests/` directory and first run `downsample.py` and then `runYOLO.py`. If both of these run, then everything was installed correctly! If you run into issues please report them.
 
 # 2. Usage
