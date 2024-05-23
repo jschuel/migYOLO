@@ -18,7 +18,7 @@ def numpy_to_png(numpy_array,vmin,vmax,cmap='jet'):
         # Apply the colormap and normalization
         colored_image = colormap(norm(numpy_array[i]))
         # Convert to 8-bit unsigned integer
-        colored_image = (colored_image[:, :, :3] * 255).astype('uint8')  # Drop alpha channel
+        colored_image = (colored_image[:, :, :4] * 255).astype('uint8')  #Use [:, :, :3] if you want to drop the alpha channel
         # Convert the NumPy array to a PIL image
         img = Image.fromarray(colored_image)
         # Save the PIL image to memory as PNG
