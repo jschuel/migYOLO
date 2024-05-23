@@ -1,5 +1,5 @@
 yoloConf:
-  model: '../models/yolo4by4.pt'
+  model: '../models/base.pt'
   calibration_file: '../data/calibration_files/test_calibration.npy'
   vignetting_map: '../data/calibration_files/test_map.pkl'
   png_dir: '../data/benchmark/pngs'
