@@ -4,6 +4,9 @@ assume a 512 x 288 image which are the dimensions of 4x4 binned MIGDAL
 images. The calibration files are energy calibration files written
 during Fe55 runs'''
 
+import pandas as pd
+import numpy as np
+
 def simple_vignetting_correction(df,vignetting_map_file,calibration_file):
     '''Load vignetting map'''
     def load_vignetting_map(vmap_file):
@@ -41,3 +44,4 @@ def simple_vignetting_correction(df,vignetting_map_file,calibration_file):
     calibration = np.load(calibration_file)
 
     df['energy'] = 5.9/calibration[1]*df['corrected_intensity']
+

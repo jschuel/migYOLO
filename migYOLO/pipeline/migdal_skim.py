@@ -8,7 +8,7 @@ class group_and_search:
         
         '''If in_data is a pandas dataframe then that's our data, otherwise if it's a string we try to open the filepath'''
         if isinstance(in_data, pd.DataFrame):
-            self.data = indata
+            self.data = in_data
         elif isinstance(in_data, str):
             self.data = pd.read_feather(in_data)
         else:
@@ -59,9 +59,8 @@ class group_and_search:
         if len(twotrack) == 0 and len(moretrack) == 0:
             self.comb = None
             return None
-
-        '''For the twotrack case, check to make sure it isn't single tracks identified both as an ER or NR (we call these IOU = -1, really they are IOU > 0.95)'''
         elif len(twotrack) > 0 and len(moretrack) == 0:
+            '''For the twotrack case, check to make sure it isn't single tracks identified both as an ER or NR (we call these IOU = -1, really they are IOU > 0.95)'''
             for col in ['IoU','centroid_dist']:
                 twotrack[col] = twotrack[col].apply(lambda x: x[0])
             twotrack = twotrack[twotrack['IoU']>=0]
@@ -71,9 +70,8 @@ class group_and_search:
             else:
                 self.comb = None
                 return None
-
-        '''Do the same as above but for frames with >1 ER-NR pair'''
         elif len(twotrack) == 0 and len(moretrack) > 0:
+            '''Do the same as above but for frames with >1 ER-NR pair'''
             moretrack = pd.concat([self.expand_entry(moretrack,i) for i in range(0,len(moretrack))])
             moretrack.index = [i for i in range(0,len(moretrack))]
             moretrack = moretrack[moretrack['IoU']>=0]
@@ -85,8 +83,8 @@ class group_and_search:
                 #print('Total time: %s seconds'%(ed-st))
                 self.comb = None
                 return None
-        '''Now do it in cases with >= ER-NR pair'''
         else:
+            '''Now do it in cases with >= ER-NR pair'''
             for col in ['IoU','centroid_dist']:
                 twotrack[col] = twotrack[col].apply(lambda x: x[0])
             twotrack = twotrack[twotrack['IoU']>=0]

@@ -37,7 +37,7 @@ class downsample:
        
        The default values of the parameters are what we use for the pretrained YOLO models 
     '''
-    def __init__(self, infile, masterdarkfile = None, outfile = None, bin_size = 4, filter_kernel_size = 9, filter_sigma = 4/3):
+    def __init__(self, infile, outpath = None, outfile = None, masterdarkfile = None, bin_size = 4, filter_kernel_size = 9, filter_sigma = 4/3):
 
         self.infile = infile
         self.bin_size = bin_size
@@ -51,17 +51,20 @@ class downsample:
 
         #Gaussian filter
         self.processedImages = self.gaussianFilter(self.downSampledImages)
-
+        self.processedImages[self.processedImages < 0] = 0
         #If an outfile path is specified, then we save the output
-        if outfile is not None:
-            self.save_output(outfile)
+        if outpath is not None:
+            if not os.path.exists(outpath):
+                os.makedirs(outpath)
+            self.save_output(outpath+'/'+outfile)
+            print('SUCCESS: Image has been %s x %s binned and save to %s/%s.npz'%(bin_size,bin_size,outpath,outfile))
             
     def load_data(self):
         images = io.imread(self.infile,plugin='pil')
         if self.masterdarkfile is not None:
-            if os.path.splitext(self.masterdarkfile)[1] = '.npy':
+            if os.path.splitext(self.masterdarkfile)[1] == '.npy':
                 dark = np.load(self.masterdarkfile)
-            elif os.path.splitext(self.masterdarkfile)[1] = '.npz':
+            elif os.path.splitext(self.masterdarkfile)[1] == '.npz':
                 dark = np.load(self.masterdarkfile)
                 dark = dark[dark.files[0]]
             else:
@@ -71,7 +74,7 @@ class downsample:
 
     def downsample_images(self):
         #Performs downsampling by a factor of bin_size
-        ap = nn.AvgPool2D(kernel_size = self.bin_size, stride = self.bin_size, divisor_override = 1)
+        ap = nn.AvgPool2d(kernel_size = self.bin_size, stride = self.bin_size, divisor_override = 1)
         ds = ap(torch.tensor(self.images)).numpy()
         return ds
 
@@ -129,14 +132,16 @@ class yolo:
         if vignetting_map_file is not None:
             if calibration_file is None:
                 raise ValueError("calibration_file must be specified to apply vignetting corrections")
-        else:
             simple_vignetting_correction(self.data,vignetting_map_file,calibration_file)
 
-        '''Perform Migdal effect skim'''
-        gs = group_and_search(in_data = self.data, **skim_kwargs)
-        self.data = gs.data
-        self.comb = gs.comb
-
+            '''Perform Migdal effect skim only if we did vignetting corrections because we need the energy column'''
+            gs = group_and_search(in_data = self.data, **skim_kwargs)
+            self.data = gs.data
+            self.comb = gs.comb
+        else:
+            '''If we don't perform a Migdal search, self.comb needs to be None'''
+            self.comb = None
+            
         if save_pixels:
             self.outpath = outpath+'/with_pixel_hits/'
         else:
@@ -148,10 +153,14 @@ class yolo:
             if not os.path.exists(self.outpath):
                 os.makedirs(self.outpath)
             self.data.to_feather(self.outpath+outfilename)
+            print("SUCCESS: YOLO outputs saved to %s\n"%(self.outpath+outfilename))
             if not os.path.exists(self.outpath+'/migdal_candidates/'):
                 os.makedirs(self.outpath+'/migdal_candidates/')
             if self.comb is not None:
+                print("Migdal candidate found! Saved to %s"%(self.outpath+'/migdal_candidates/'+outfilename))
                 self.comb.to_feather(self.outpath+'/migdal_candidates/'+outfilename)
+            else:
+                print("No Migdal candidates found with the input migdal_cut!")
         else:
             print("File empty, didn't write")
 
