@@ -33,18 +33,18 @@ e. Install Ultralytics' YOLOv8 package with
 pip install ultralytics
 ```
 
-f. Download `zipped_files.zip` here (give link) and move it to `migYOLO/migYOLO` (once we have a non Google Drive server to store our data, this step will be automated with `wget` statements in `setup_environment.sh`):
+f. Download `data_and_models.zip` here (give link) and move it to `migYOLO/migYOLO` (once we have a non Google Drive server to store our data, this step will be automated with `wget` statements in `setup_environment.sh`):
 ```sh
-mv /path/to/zipped_files.zip /path/to/migYOLO/migYOLO/
+mv /path/to/data_and_models.zip /path/to/migYOLO/migYOLO/
 ```
-make sure you replace both instances of `/path/to/` to the correct paths on your filesystem. `zipped_files.zip` contains the example image data used to get started with this package as well as two pretrained YOLO models called `base.pt` and `augment.pt`. These are the base and augment models described in the paper (**provide link when on arXiv**)
+make sure you replace both instances of `/path/to/` to the correct paths on your filesystem. `data_and_models.zip` contains the example image data used to get started with this package as well as two pretrained YOLO models called `base.pt` and `augment.pt`. These are the base and augment models described in the paper (**provide link when on arXiv**)
 
 g. In `migYOLO/migYOLO` run `setup_environment.sh` with
 ```sh
 source setup_environment.sh
 ```
-Running this command will (1) unzip zipped_files.zip, (2) move all of its contents to their appropriate directories, and (3) remove zipped_files.zip
+Running this command will (1) unzip data_and_models.zip, (2) move all of its contents to their appropriate directories, and (3) remove data_and_models.zip
 
-h. Navigate to the `tests/` directory and first run `downsample.py` and then `runYOLO.py`. If both of these run, then everything was installed correctly! If you run into issues please report them.
+h. Navigate to the `tests/` directory and first run `python3 downsample.py` and then `python3 runYOLO.py`. If both of these run, then everything was installed correctly! If you run into issues please report them.
 
 # 2. Usage
