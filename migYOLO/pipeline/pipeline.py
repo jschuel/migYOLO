@@ -160,7 +160,7 @@ class yolo:
                 print("Migdal candidate found! Saved to %s"%(self.outpath+'/migdal_candidates/'+outfilename))
                 self.comb.to_feather(self.outpath+'/migdal_candidates/'+outfilename)
             else:
-                print("No Migdal candidates found with the input migdal_cut!")
+                print("No Migdal candidates found with the input migdal_cut.")
         else:
             print("File empty, didn't write")
 
