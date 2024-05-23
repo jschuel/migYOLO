@@ -10,7 +10,10 @@ def numpy_to_png(numpy_array,vmin,vmax,cmap='jet'):
     png_images = []
 
     # Define the colormap and normalization
-    colormap = cm.get_cmap(cmap)  # You can choose any colormap you prefer
+    try: #For version of matplotlib before 3.9
+        colormap = cm.get_cmap(cmap)  # You can choose any colormap you prefer
+    except: #for versions after 3.9
+        colormap = plt.get_cmap(cmap)  # You can choose any colormap you prefer
     norm = plt.Normalize(vmin=vmin, vmax=vmax)  # Fixed colorscale
 
     '''For MIGDAL our we have 200 images'''
