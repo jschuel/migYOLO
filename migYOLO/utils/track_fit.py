@@ -1,6 +1,8 @@
 '''Track fitting function inputs sparse column, row, and intensity coordinates
 as well as YOLO's track prediction. If the track is an ER, NR, proton, or proton afterglow, the algorithm will fit a principal axis to the track and then compute the track length using a singular value decomposition. If the track is an ER or NR, the algorithm will further compute the head charge fraction to determine the tracks principal vector and will then compute the angle phi with respect to the positive x axis of the ca,era readout. If the track is a proton, the algorithm will return -1 for the angle and head charge fraction. If the event is none of these four classes of tracks, -1 will be returned for the length, angle, and head charge fraction''' 
 
+import numpy as np
+
 def compute_SVD_length_angle_and_HCF(col,row,intensity,pred):
     if pred == 0 or pred == 2 or pred == 3 or pred == 4:
         idx = np.where(intensity>10)[0]
