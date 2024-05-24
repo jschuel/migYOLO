@@ -4,6 +4,8 @@ yoloConf:
   vignetting_map: '../data/calibration_files/test_map.pkl'
   downsample_path: '../data/downsampled_images'
   outpath: 'output'
+  save_pixels: False #If true, all pixels within bounding boxes are saved
+  remove_downsample: True #If true, pipeline.yolo deletes downsampled images upon successful completion
   png_threshold: 1.4
   png_saturation: 4
   migdal_cut: 'NR_energy > 60 & centroid_dist < 6'

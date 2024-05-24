@@ -27,6 +27,7 @@ setup(
         "pillow>=7.0.0",
         "pyyaml>=5.3",
         "pyarrow>=1.0.0",
+        "notebook>=6.0.0",
     ],
     include_package_data=True,
 )

@@ -37,15 +37,22 @@ class downsample:
        
        The default values of the parameters are what we use for the pretrained YOLO models 
     '''
-    def __init__(self, infile, outpath = None, outfile = None, masterdarkfile = None, bin_size = 4, filter_kernel_size = 9, filter_sigma = 4/3):
-
-        self.infile = infile
+    def __init__(self, infile, outpath = None, outfile = None, masterdarkfile = '../data/dark/sample_master_dark.npy', bin_size = 4, filter_kernel_size = 9, filter_sigma = 4/3):
+        
         self.bin_size = bin_size
         self.masterdarkfile = masterdarkfile
+        dark = self.load_dark()
 
-        #load images
-        self.images = self.load_data()
+        '''Add flexibility to read in numpy arrays or image files'''
+        if isinstance(infile, np.ndarray):
+            self.images = infile-dark
 
+        elif isinstance(infile, str):
+            self.infile = infile
+            #load images
+            self.images = self.load_data()
+            self.images = self.images - dark
+            
         #downsample
         self.downSampledImages = self.downsample_images()
 
@@ -58,9 +65,8 @@ class downsample:
                 os.makedirs(outpath)
             self.save_output(outpath+'/'+outfile)
             print('SUCCESS: Image has been %s x %s binned and save to %s/%s.npz'%(bin_size,bin_size,outpath,outfile))
-            
-    def load_data(self):
-        images = io.imread(self.infile,plugin='pil')
+
+    def load_dark(self):
         if self.masterdarkfile is not None:
             if os.path.splitext(self.masterdarkfile)[1] == '.npy':
                 dark = np.load(self.masterdarkfile)
@@ -69,18 +75,21 @@ class downsample:
                 dark = dark[dark.files[0]]
             else:
                 raise ValueError("Master dark needs to be .npy or .npz. Make sure this is the case or set masterdarkfile to None to not dark subtract")
-            images = images - dark
+        return dark
+            
+    def load_data(self):
+        images = io.imread(self.infile,plugin='pil')
         return images
 
     def downsample_images(self):
         #Performs downsampling by a factor of bin_size
         ap = nn.AvgPool2d(kernel_size = self.bin_size, stride = self.bin_size, divisor_override = 1)
-        ds = ap(torch.tensor(self.images)).numpy()
+        ds = ap(torch.tensor(self.images).float().unsqueeze(0)).squeeze(0).numpy()
         return ds
 
     def gaussianFilter(self,image):
         gb = GaussianBlur(kernel_size = 9, sigma = (4/3,4/3))
-        filtered = gb(torch.tensor(image)).numpy()
+        filtered = gb(torch.tensor(image).unsqueeze(0)).squeeze(0).numpy()
         return filtered
 
     def save_output(self,output):
