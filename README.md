@@ -1,5 +1,8 @@
 # migYOLO v1.0.0
 migYOLO is a package containing tools for using YOLOv8 to process and perform object detection analyses on CMOS camera data from the MIGDAL experiment (**link to arXiv paper when up and add a gif of bounding boxes**). The package has GPU support through PyTorch.
+
+![][migYOLO/migYOLO/figures/object_detect.gif]
+
 ### 1. Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12)
 
 a. Clone the repository
