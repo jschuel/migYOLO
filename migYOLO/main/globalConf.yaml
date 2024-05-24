@@ -1,0 +1,14 @@
+yoloConf:
+  model: '../models/base.pt'
+  calibration_file: '../data/calibration_files/test_calibration.npy'
+  vignetting_map: '../data/calibration_files/test_map.pkl'
+  downsample_path: '../data/downsampled_images'
+  outpath: 'output'
+  png_threshold: 1.4
+  png_saturation: 4
+  migdal_cut: 'NR_energy > 60 & centroid_dist < 6'
+  
+downsample:
+  dark_file: '../data/dark/sample_master_dark.npy'
+  data_dir: '../data/raw_images' #input data directory
+  outpath: '../data/downsampled_images' #outpath for downsampled images
