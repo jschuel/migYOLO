@@ -158,6 +158,8 @@ class yolo:
                 os.makedirs(self.outpath+'/migdal_candidates/')
             if self.comb is not None:
                 print("Migdal candidate found! Saved to %s"%(self.outpath+'/migdal_candidates/'+outfilename))
+                '''Need to reset index if we save as feather'''
+                self.comb.index = [i for i in range(0,len(self.comb))]
                 self.comb.to_feather(self.outpath+'/migdal_candidates/'+outfilename)
             else:
                 print("No Migdal candidates found with the input migdal_cut.")

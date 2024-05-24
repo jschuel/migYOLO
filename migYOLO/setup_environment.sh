@@ -12,7 +12,7 @@ makedirs() {
     local paths=("data/benchmark/random_benchmark_image/"
                  "data/benchmark/high_occupancy_image/"
                  "data/dark/"
-		 "data/benchmark/raw_images/"
+		 "data/raw_images/"
                  "models/")
     for path in "${paths[@]}"; do
         if [ ! -d "$path" ]; then

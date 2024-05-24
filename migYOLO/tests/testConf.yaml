@@ -11,6 +11,4 @@ yoloConf:
 downsample:
   dark_file: '../data/dark/sample_master_dark.npy'
   data_dir: '../data/raw_images' #input data directory
-  batch_size: 1 #Size of batches for downsampling
-  num_workers: 2 #number of parallel jobs for batch loading in downsample.py
   outpath: 'test_output/downsampled_images' #outpath for downsampled images
