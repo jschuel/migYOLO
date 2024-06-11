@@ -36,7 +36,7 @@ e. Install Ultralytics' YOLOv8 package with
 pip install ultralytics
 ```
 
-f. Download `data_and_models.zip` [here](https://drive.google.com/file/d/1CpE4wJ1e0AiBm_i9c2dVBWQkmBInpLnL/view?usp=sharing) and move it to `migYOLO/migYOLO` (once we have a non Google Drive server to store our data, this step will be automated with `wget` statements in `setup_environment.sh`):
+f. Download `data_and_models.zip` [link coming soon]() and move it to `migYOLO/migYOLO` (once we have a non Google Drive server to store our data, this step will be automated with `wget` statements in `setup_environment.sh`):
 ```sh
 mv /path/to/data_and_models.zip /path/to/migYOLO/migYOLO/
 ```
