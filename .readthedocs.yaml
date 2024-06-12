@@ -30,8 +30,8 @@ build:
 
 # Additional options
 submodules:
-  include: true
-  recursive: true
+  include: '**'
+#  recursive: true
 
 # Environment variables for the build process
 env:
