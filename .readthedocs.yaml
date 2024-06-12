@@ -12,11 +12,10 @@ formats:
   - "pdf"
   - "epub"
 
-#python:
-#  version: 3.10
-#  install:
-#    - requirements: docs/requirements.txt
-
+python:
+  install:
+    - requirements: docs/requirements.txt
+    
 # Uncomment this section if your documentation has external dependencies
 # using:
 #   system_packages: true
