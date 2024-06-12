@@ -3,7 +3,7 @@ migYOLO is a package containing tools for using the YOLOv8-based processing and 
 
 ![Object detection](migYOLO/figures/object_detect.gif)
 
-### 1. Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12)
+### 1. Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week. 
 
 a. Clone the repository
 ```sh
@@ -50,4 +50,4 @@ Running this command will (1) unzip data_and_models.zip, (2) move all of its con
 
 h. Navigate to the `tests/` directory and first run `python3 downsample.py` and then `python3 runYOLO.py`. If both of these run, then everything was installed correctly! If you run into issues please report them.
 
-# 2. Usage
+# 2. Usage (Coming soon)
