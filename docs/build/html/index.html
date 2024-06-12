@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to migYOLO’s documentation! &mdash; migYOLO v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=76e2d817"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            migYOLO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">migYOLO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to migYOLO’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-migyolo-s-documentation">
+<h1>Welcome to migYOLO’s documentation!<a class="headerlink" href="#welcome-to-migyolo-s-documentation" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<p># migYOLO v1.0.0
+migYOLO is a package containing tools for using the YOLOv8-based processing and rare event search analysis pipeline for CMOS camera data from the MIGDAL experiment ([paper preprint here](<a class="reference external" href="https://arxiv.org/abs/2406.07538">https://arxiv.org/abs/2406.07538</a>)). This package has GPU support through PyTorch.</p>
+<p>![Object detection](migYOLO/figures/object_detect.gif)</p>
+<p>### 1. Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</p>
+<p>a. Clone the repository
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/jschuel/migYOLO.git</span>
+<span class="pre">`</span></code>
+or
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">git&#64;github.com:jschuel/migYOLO.git</span>
+<span class="pre">`</span></code></p>
+<p>b. Set up a virtual environment with <cite>python&gt;=3.8</cite>. If you use Anaconda, you can do something like
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">migYOLO</span> <span class="pre">python=3.10</span>
+<span class="pre">`</span></code>
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">migYOLO</span>
+<span class="pre">`</span></code></p>
+<p>c. Navigate to <cite>migYOLO</cite> where the <cite>setup.py</cite> file is and run
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span>
+<span class="pre">`</span></code></p>
+<p>This will install migYOLO and all necessary packages <strong>except</strong> PyTorch and Ultralytics’ YOLOv8.</p>
+<ol class="loweralpha simple" start="4">
+<li><p>Follow the instructions on the installation guide of the front page of the [PyTorch website](<a class="reference external" href="https://pytorch.org/">https://pytorch.org/</a>) to install pytorch. The “compute platform” row allows you to select the relevant platform for your GPU or “CPU only” if you do not have a compatible GPU</p></li>
+</ol>
+<p>e. Install Ultralytics’ YOLOv8 package with
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ultralytics</span>
+<span class="pre">`</span></code></p>
+<p>f. Download <cite>data_and_models.zip</cite> [link coming soon]() and move it to <cite>migYOLO/migYOLO</cite> (once we have a non Google Drive server to store our data, this step will be automated with <cite>wget</cite> statements in <cite>setup_environment.sh</cite>):
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">mv</span> <span class="pre">/path/to/data_and_models.zip</span> <span class="pre">/path/to/migYOLO/migYOLO/</span>
+<span class="pre">`</span></code>
+make sure you replace both instances of <cite>/path/to/</cite> to the correct paths on your filesystem. <cite>data_and_models.zip</cite> contains the example image data used to get started with this package as well as two pretrained YOLO models called <cite>base.pt</cite> and <cite>augment.pt</cite>. These are the base and augment models described in the paper (<strong>provide link when on arXiv</strong>)</p>
+<p>g. In <cite>migYOLO/migYOLO</cite> run <cite>setup_environment.sh</cite> with
+<code class="docutils literal notranslate"><span class="pre">`sh</span>
+<span class="pre">source</span> <span class="pre">setup_environment.sh</span>
+<span class="pre">`</span></code>
+Running this command will (1) unzip data_and_models.zip, (2) move all of its contents to their appropriate directories, and (3) remove data_and_models.zip</p>
+<ol class="loweralpha simple" start="8">
+<li><p>Navigate to the <cite>tests/</cite> directory and first run <cite>python3 downsample.py</cite> and then <cite>python3 runYOLO.py</cite>. If both of these run, then everything was installed correctly! If you run into issues please report them.</p></li>
+</ol>
+<p># 2. Usage (Coming soon)</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jeff Schueler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
