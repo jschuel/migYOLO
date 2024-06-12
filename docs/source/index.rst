@@ -10,6 +10,10 @@ Welcome to migYOLO's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   Introduction
+   Installation
+   Usage
+
 
 
 Indices and tables

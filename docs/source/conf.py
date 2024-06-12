@@ -56,9 +56,9 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 # Support both .rst and .md files
-source_suffix = ['.rst', '.md']
+#source_suffix = ['.rst', '.md']
 
-#source_suffix = {
-#    '.rst': 'restructuredtext',
-#    '.md': 'markdown',
-#}
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
