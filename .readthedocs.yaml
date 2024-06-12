@@ -8,14 +8,14 @@ sphinx:
 
 # Build using the stable version of your code
 formats:
-  - html
-  - pdf
-  - epub
+  - "html"
+  - "pdf"
+  - "epub"
 
-#python:
-#  version: 3.8
-#  install:
-#    - requirements: docs/requirements.txt
+python:
+  version: "3.10"
+  install:
+    - requirements: docs/requirements.txt
 
 # Uncomment this section if your documentation has external dependencies
 # using:
@@ -23,7 +23,7 @@ formats:
 
 # Build configuration options
 build:
-  os: ubuntu-22.04
+  os: "ubuntu-22.04"
   tools:
     python: "3.10"
     # If you need other languages/tools, add them here
