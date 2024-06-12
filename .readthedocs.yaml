@@ -39,5 +39,5 @@ sphinx:
   configuration: docs/source/conf.py
 
 # HTML build settings
-html:
-  theme: sphinx_rtd_theme
+#html:
+#  theme: sphinx_rtd_theme
