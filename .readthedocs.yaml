@@ -28,16 +28,6 @@ build:
     python: "3.10"
     # If you need other languages/tools, add them here
 
-# Additional options
-submodules:
-  include: '**'
-#  recursive: true
-
-# Environment variables for the build process
-env:
-  # You can define environment variables here
-  # EXAMPLE_VAR: value
-
 # If your documentation is in Markdown, you can enable markdown support
 sphinx:
   builder: html
