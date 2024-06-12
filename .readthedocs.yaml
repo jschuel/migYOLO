@@ -1,0 +1,53 @@
+# .readthedocs.yaml
+
+version: 2
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+  configuration: docs/source/conf.py
+
+# Build using the stable version of your code
+formats:
+  - html
+  - pdf
+  - epub
+
+#python:
+#  version: 3.8
+#  install:
+#    - requirements: docs/requirements.txt
+
+# Uncomment this section if your documentation has external dependencies
+# using:
+#   system_packages: true
+
+# Build configuration options
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.10"
+    # If you need other languages/tools, add them here
+
+# Additional options
+submodules:
+  include: true
+  recursive: true
+
+# Environment variables for the build process
+env:
+  # You can define environment variables here
+  # EXAMPLE_VAR: value
+
+# If your documentation is in Markdown, you can enable markdown support
+sphinx:
+  builder: html
+  configuration: docs/source/conf.py
+  fail_on_warning: false
+
+# Specify the root document to be built
+sphinx:
+  configuration: docs/source/conf.py
+
+# HTML build settings
+html:
+  theme: sphinx_rtd_theme
