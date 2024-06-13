@@ -18,6 +18,8 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=[
+        "label-studio>=1.12.1",
+        "label-studio-ml>=1.0.9",
         "numpy>=1.17.5",
         "pandas>=1.0.0",
         "matplotlib>=3.2.0",
@@ -27,7 +29,9 @@ setup(
         "pillow>=7.0.0",
         "pyyaml>=5.3",
         "pyarrow>=1.0.0",
-        "notebook>=6.0.0",
+        "notebook<6.5.0",
+        "cmasher",
+        "unzip",
     ],
     include_package_data=True,
 )

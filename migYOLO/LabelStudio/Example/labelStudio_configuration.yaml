@@ -1,0 +1,16 @@
+labelStudioConf: #Configuration for Label Studio
+  ML_path: '../../models/augment.pt' #Path to YOLO weights file for Label Studio preannotations
+  URL: 'http://192.168.1.163:8080' #Replace the X's with your local IP address. 'http://<your_IP_address>:8080
+  TOKEN: 'f0f1692429d29c1e8ede5bb137f646737fff7fbe' #This is a security token to communicate with Label Studio. You can find this by typing label-studio user --username <email address you use to sign into Label Studio> in your terminal
+
+Objects: #These are the object classes you want to train YOLO on. You can define new objects by adding a new row. These are read into generate_xml.py for LabelStudio and preannotate.py for the LabelStudio ML backend
+  ER: True
+  Hot_pixel: True
+  NR: True
+  NR_AG: False #NR afterglow
+  Proton: True
+  Proton_AG: True #Proton afterglow
+  Rolling_shutter: True #Events cut off by Rolling Shutter
+  Spark: True
+  Spark_AG: True
+  Storm: True #high occupancy particle showers

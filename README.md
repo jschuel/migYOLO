@@ -1,7 +1,9 @@
 # migYOLO v1.0.0
-migYOLO is a package containing tools for using the YOLOv8-based processing and rare event search analysis pipeline for CMOS camera data from the MIGDAL experiment ([paper preprint here](https://arxiv.org/abs/2406.07538)). This package has GPU support through PyTorch.
+migYOLO is a package containing tools for using the YOLOv8-based processing and rare event search analysis pipeline for CMOS camera data from the MIGDAL experiment ([paper preprint here](https://arxiv.org/abs/2406.07538)). This package has GPU support through PyTorch. For installation and usage instructions, please consult the [official documentation](https://migyolo.readthedocs.io/en/latest/)
 
 ![Object detection](migYOLO/figures/object_detect.gif)
+
+*Update (June 12th, 2024)*: Data is not yet available but is coming soon. I expect it to be available within a week.
 
 ### 1. Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week. 
 

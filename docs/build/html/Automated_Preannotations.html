@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting up automated preannotations &mdash; migYOLO v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=76e2d817"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Usage" href="Usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            migYOLO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up automated preannotations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-usage">General usage</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">migYOLO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setting up automated preannotations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Automated_Preannotations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setting-up-automated-preannotations">
+<h1>Setting up automated preannotations<a class="headerlink" href="#setting-up-automated-preannotations" title="Link to this heading"></a></h1>
+<p>migYOLO interfaces with the open-source <a class="reference external" href="https://labelstud.io/">Label Studio labeling software</a>. This tutorial runs through how to import a pre-trained YOLO model to generate automated pre-annotations of tracks as is demonstrated in Section III B and Figure 5 of <a class="reference external" href="https://arxiv.org/abs/2406.07538">our paper</a>.</p>
+<section id="instructions">
+<h2>Instructions:<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>In a terminal window type <code class="docutils literal notranslate"><span class="pre">label-studio</span></code>. A browser window will pop up. Either sign up or log into your existing account if you have one.</p></li>
+<li><p>Once you log in there should be a button that says <code class="docutils literal notranslate"><span class="pre">Create</span></code>. Click on this button to create a labeling project. A pop-up window will open where you can enter your Project Name and description. Click on the <code class="docutils literal notranslate"><span class="pre">Labeling</span> <span class="pre">Setup</span></code> tab and then click <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">template</span></code>.</p></li>
+</ol>
+<p><img alt="template" src="_images/custom_template.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>A code block will show up. Delete the code block, and follow the procedure below to use migYOLO to generate custom XML code for this labeling project:</p></li>
+</ol>
+<p>3a. Navigate to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example</span></code> and open <code class="docutils literal notranslate"><span class="pre">labelStudio_configuration.yaml</span></code>.</p>
+<p><img alt="config" src="_images/config.png" /></p>
+<p>3b. For this example make sure all fields under the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> header are set to True <em>except</em> for <code class="docutils literal notranslate"><span class="pre">NR_AG</span></code>. Set <code class="docutils literal notranslate"><span class="pre">NR_AG</span></code> to false</p>
+<p>3c. Replace the highlighted URL with your machine’s local IP address</p>
+<p>3d. Fill in the highlighted TOKEN field with your Label Studio API token. You can find this by typing</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>label-studio<span class="w"> </span>user<span class="w"> </span>--username<span class="w"> </span>&lt;Label<span class="w"> </span>Studio<span class="w"> </span>login<span class="w"> </span>email<span class="w"> </span>address&gt;<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>terminal
+</pre></div>
+</div>
+<p>Make sure to remove the “&lt;” and “&gt;” brackets when you type in your email address. The output of this command is a python dictionary; copy and paste the value of the <code class="docutils literal notranslate"><span class="pre">'token'</span></code> field into the <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> field of <code class="docutils literal notranslate"><span class="pre">labelStudio_configuration.yaml</span></code></p>
+<p>3e. Navigate to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example/</span></code> and run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>make_labeling_template.py
+</pre></div>
+</div>
+<p>3f. An xml file called <code class="docutils literal notranslate"><span class="pre">output.xml</span></code> will be generated. Open the xml file, copy its contents, and paste it into the Label Studio code block. Nine label icons should now pop up as shown below</p>
+<p><img alt="ftemplate" src="_images/filled_template.png" /></p>
+<p>3g. Click on <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Import</span></code> (boxed in red in the image above). You can load the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example/sample_pngs</span></code> directory by opening it up in a file browser and dragging the <code class="docutils literal notranslate"><span class="pre">sample_pngs</span></code> folder icon into the label Studio interface. Once the files have uploaded, click save.</p>
+<ol class="arabic simple" start="4">
+<li><p>Next we need to create our machine learning (ML) backend. In the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example</span></code> directory, run <code class="docutils literal notranslate"><span class="pre">create_ml_environment.sh</span></code> with</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>create_ml_environment.sh
+</pre></div>
+</div>
+<p>The script will prompt you to enter a project name. Let’s enter <code class="docutils literal notranslate"><span class="pre">proj</span></code> as the name for now.</p>
+<ol class="arabic simple" start="5">
+<li><p>Now we can start the ML backend with</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>start_ml_backend.sh
+</pre></div>
+</div>
+<p>This script will also prompt you to enter a project name. Enter the name of the project you would like to start the backend for. (Use the name you created in Step 4 if doing this for the first time)</p>
+<ol class="arabic simple" start="6">
+<li><p>Now, open up the label studio window and click <code class="docutils literal notranslate"><span class="pre">Settings</span></code> and then on the left hand side of the window click <code class="docutils literal notranslate"><span class="pre">Model</span></code> and then there will be a blue button that says <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">Model</span></code>. Click on <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">model</span></code></p></li>
+<li><p>A popup window will come up. Fill it out as shown (you can change the name) and click <code class="docutils literal notranslate"><span class="pre">Validate</span> <span class="pre">and</span> <span class="pre">Save</span></code>. The model should connect.</p></li>
+</ol>
+<p><img alt="input" src="_images/model_input.png" /></p>
+<p><img alt="connected" src="_images/connected.png" /></p>
+<ol class="arabic simple" start="8">
+<li><p>Go back to your project homepage by clicking your project name (boxed in red in the above image). Click on an image and the model should automatically annotate it!</p></li>
+</ol>
+<p><img alt="preannotate" src="_images/preannotate.png" /></p>
+</section>
+<section id="general-usage">
+<h2>General usage<a class="headerlink" href="#general-usage" title="Link to this heading"></a></h2>
+<p>Now that you’ve set this up once, moving forward, if you want to use the same ML backend you simply need to run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">start_ml_backend.sh</span></code> enter the appropriate project name, and then load you model in the Label Studio front end at Settings-&gt;Model.</p>
+<p>If you want to change your YOLO model, you can simply change the model path in <code class="docutils literal notranslate"><span class="pre">labelStudio_configuration.yaml</span></code>, then create a new project with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">create_ml_environment.sh</span></code>, start it with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">start_ml_backend.sh</span></code> and load in in the Label Studio front end at Settings-&gt;Model.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jeff Schueler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

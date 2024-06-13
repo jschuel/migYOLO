@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; migYOLO v1.0.0 documentation</title>
+  <title>Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week. &mdash; migYOLO v1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -47,8 +47,9 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
 </ul>
 
         </div>
@@ -65,7 +66,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Installation.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,8 +76,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+  <section id="installation-successully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12-update-june-12th-2024-data-is-not-yet-available-but-is-coming-soon-i-expect-it-to-be-available-within-a-week">
+<h1>Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.<a class="headerlink" href="#installation-successully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12-update-june-12th-2024-data-is-not-yet-available-but-is-coming-soon-i-expect-it-to-be-available-within-a-week" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Clone the migYOLO repository</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jschuel/migYOLO.git
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git@github.com:jschuel/migYOLO.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Set up a virtual environment with <code class="docutils literal notranslate"><span class="pre">python&gt;=3.8</span></code>. If you use Anaconda, you can do something like</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>migYOLO<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>migYOLO
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">migYOLO</span></code> parent directory where the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file is and run</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>This will install migYOLO and all necessary packages <strong>except</strong> PyTorch and Ultralytics’ YOLOv8.</p>
+<ol class="arabic simple" start="4">
+<li><p>Follow the instructions on the installation guide of the front page of the <a class="reference external" href="https://pytorch.org/">PyTorch website</a> to install pytorch. The “compute platform” row allows you to select the relevant platform for your GPU or “CPU only” if you do not have a compatible GPU</p></li>
+<li><p>Install Ultralytics’ YOLOv8 package with</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
+</pre></div>
+</div>
+<p><em>Update (June 12th): Data is currently unavailable so these steps will not work. I anticipate data to be available within a week.</em></p>
+<ol class="arabic simple" start="6">
+<li><p>Download <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code> (<em>link coming soon</em>) and move it to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO</span></code> (once we have a non Google Drive server to store our data, this step will be automated with <code class="docutils literal notranslate"><span class="pre">wget</span></code> statements in <code class="docutils literal notranslate"><span class="pre">setup_environment.sh</span></code>):</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>/path/to/data_and_models.zip<span class="w"> </span>/path/to/migYOLO/migYOLO/
+</pre></div>
+</div>
+<p>make sure you replace both instances of <code class="docutils literal notranslate"><span class="pre">/path/to/</span></code> to the correct paths on your filesystem. <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code> contains the example image data used to get started with this package as well as two pretrained YOLO models called <code class="docutils literal notranslate"><span class="pre">base.pt</span></code> and <code class="docutils literal notranslate"><span class="pre">augment.pt</span></code>. These are the base and augment models described in the paper (<strong>provide link when on arXiv</strong>)</p>
+<ol class="arabic simple" start="7">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO</span></code> run <code class="docutils literal notranslate"><span class="pre">setup_environment.sh</span></code> with</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>setup_environment.sh
+</pre></div>
+</div>
+<p>Running this command will (1) unzip data_and_models.zip, (2) move all of its contents to their appropriate directories, and (3) remove data_and_models.zip</p>
+<ol class="arabic simple" start="8">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory and first run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">downsample.py</span></code> and then <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">runYOLO.py</span></code>. If both of these run, then everything was installed correctly! If you run into issues please report them.</p></li>
+</ol>
 </section>
 
 

@@ -16,7 +16,7 @@ def numpy_to_png(numpy_array,vmin,vmax,cmap='jet'):
         colormap = plt.get_cmap(cmap)  # You can choose any colormap you prefer
     norm = plt.Normalize(vmin=vmin, vmax=vmax)  # Fixed colorscale
 
-    '''For MIGDAL our we have 200 images'''
+    '''For MIGDAL we have 200 images'''
     for i in range(numpy_array.shape[0]):
         # Apply the colormap and normalization
         colored_image = colormap(norm(numpy_array[i]))
