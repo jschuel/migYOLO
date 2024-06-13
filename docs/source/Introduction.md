@@ -26,7 +26,7 @@ Chapter III of the paper goes into full detail of what the pipeline does. In sho
 
 2. Benchmark scripts in `migYOLO/migYOLO/benchmark/` to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)
 
-3. [Label Studio integration](https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html) for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the `migYOLO/migYOLO/LabelStudio/Example/sample_pngs` directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.
+3. [Label Studio integration](https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html) for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the `migYOLO/migYOLO/LabelStudio/Example/sample_pngs` directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.**
 
 4. (Coming soon): tutorials for training YOLO
 
