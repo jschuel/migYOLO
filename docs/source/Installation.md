@@ -1,6 +1,6 @@
 # Installation
 
-We have successully tested migYOLO with python 3.8, 3.9, 3.10, 3.11, and 3.12. As of June 12th, 2024, data is not yet available
+We have successully tested migYOLO with python 3.8, 3.9, 3.10, 3.11, and 3.12. **As of June 12th, 2024, data is not yet available. Page will be updated once data is available (hopefully within a week)**
 
 ## Instructions
 
@@ -11,7 +11,7 @@ git clone https://github.com/jschuel/migYOLO.git
 or
 
 ```sh
-git@github.com:jschuel/migYOLO.git
+git clone git@github.com:jschuel/migYOLO.git
 ```
 
 2. Set up a virtual environment with `python>=3.8`. If you use Anaconda, you can do something like

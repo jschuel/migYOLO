@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week. &mdash; migYOLO v1.0.0 documentation</title>
+  <title>Installation &mdash; migYOLO v1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="Usage.html" />
+    <link rel="next" title="Setting up automated preannotations" href="Automated%20Preannotations.html" />
     <link rel="prev" title="Introduction" href="Introduction.html" /> 
 </head>
 
@@ -47,9 +47,16 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pretrained%20YOLO%20models.html">Pretrained YOLO models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analyzing%20outputs.html">Analyzing Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
 </ul>
 
         </div>
@@ -66,7 +73,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</li>
+      <li class="breadcrumb-item active">Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Installation.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,8 +83,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation-successully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12-update-june-12th-2024-data-is-not-yet-available-but-is-coming-soon-i-expect-it-to-be-available-within-a-week">
-<h1>Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.<a class="headerlink" href="#installation-successully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12-update-june-12th-2024-data-is-not-yet-available-but-is-coming-soon-i-expect-it-to-be-available-within-a-week" title="Link to this heading"></a></h1>
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>We have successully tested migYOLO with python 3.8, 3.9, 3.10, 3.11, and 3.12. <strong>As of June 12th, 2024, data is not yet available. Page will be updated once data is available (hopefully within a week)</strong></p>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Clone the migYOLO repository</p></li>
 </ol>
@@ -85,7 +95,7 @@
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git@github.com:jschuel/migYOLO.git
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:jschuel/migYOLO.git
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -111,7 +121,7 @@
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
 </pre></div>
 </div>
-<p><em>Update (June 12th): Data is currently unavailable so these steps will not work. I anticipate data to be available within a week.</em></p>
+<p><strong>Update (June 12th): Data is currently unavailable so these steps will not work. I anticipate data to be available within a week.</strong></p>
 <ol class="arabic simple" start="6">
 <li><p>Download <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code> (<em>link coming soon</em>) and move it to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO</span></code> (once we have a non Google Drive server to store our data, this step will be automated with <code class="docutils literal notranslate"><span class="pre">wget</span></code> statements in <code class="docutils literal notranslate"><span class="pre">setup_environment.sh</span></code>):</p></li>
 </ol>
@@ -130,13 +140,14 @@
 <li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory and first run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">downsample.py</span></code> and then <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">runYOLO.py</span></code>. If both of these run, then everything was installed correctly! If you run into issues please report them.</p></li>
 </ol>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Automated%20Preannotations.html" class="btn btn-neutral float-right" title="Setting up automated preannotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

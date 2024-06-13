@@ -46,9 +46,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-does-this-pipeline-do">What does this pipeline do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-does-this-package-include">What does this package include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-package">Using the package</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
 </ul>
 
         </div>
@@ -77,6 +82,37 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>migYOLO is a collection of software tools meant to serve as a companion to the MIGDAL collaboration paper: <a class="reference external" href="https://arxiv.org/abs/2406.07538">Transforming a rare event search into a not-so-rare event search in real-time with deep learning-based object detection</a>. In the paper we highlight a <a class="reference external" href="https://github.com/ultralytics/ultralytics">YOLOv8</a>-based pipeline designed for real time rare event search analyses on 2D high resolution images of particle tracks recorded by the <a class="reference external" href="https://camera.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/sys/SCAS0154E_C15550-20UP_tec.pdf">Hamamatsu ORCA-Quest qCMOS</a> camera readout of the MIGDAL detector.</p>
+<section id="what-does-this-pipeline-do">
+<h2>What does this pipeline do<a class="headerlink" href="#what-does-this-pipeline-do" title="Link to this heading"></a></h2>
+<p>Chapter III of the paper goes into full detail of what the pipeline does. In short, the pipeline does the following:</p>
+<ol class="arabic simple">
+<li><p>Reads in batches of 200 images</p></li>
+<li><p>Processes the images by (a) downsampling using 4x4 binning and (b) Gaussian filtering the downsampled images</p></li>
+<li><p>Feeds the processed images into a pretrained model of YOLOv8 that identifies bounding boxes (example shown below)</p></li>
+</ol>
+<p><img alt="yolo" src="_images/yolo_apply.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Performs a physics analysis on each bounding box identified as either a nuclear recoil, electron recoil, or proton. The quantities extracted are the track’s energy, length, axial angle (for protons), and vector angle (after applying head/tail corrections) for electron recoils and nuclear recoils</p></li>
+<li><p>Each bounding box’s extracted physics quantities, bounding box coordinates, classification ID, and classification confidence score are added to a bounding box-indexed Pandas dataframe. The dataframe corresponding to the entire batch of 200 images is saved.</p></li>
+<li><p>Each unique electron recoil – nuclear recoil present in a given frame that satisfies user defined Migdal skim criteria is separately saved in a electronRecoil-nuclearRecoil pair-indexed file.</p></li>
+</ol>
+</section>
+<section id="what-does-this-package-include">
+<h2>What does this package include<a class="headerlink" href="#what-does-this-package-include" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Pretrained YOLO files <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/base.pt</span></code> and <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/augment.pt</span></code> that correspond to the Base and Augment training samples described in Table I and Table III of the paper, respectively.</p></li>
+<li><p>Benchmark scripts in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark/</span></code> to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)</p></li>
+<li><p><a class="reference external" href="https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html">Label Studio integration</a> for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example/sample_pngs</span></code> directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.</p></li>
+<li><p>(Coming soon): tutorials for training YOLO</p></li>
+<li><p>Scripts to run the pipeline on 1,000 preselected images</p></li>
+<li><p>(coming soon) Jupyter notebooks to analyze YOLO’s output</p></li>
+</ol>
+</section>
+<section id="using-the-package">
+<h2>Using the package<a class="headerlink" href="#using-the-package" title="Link to this heading"></a></h2>
+<p>Each entry in the table of contents can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the <a class="reference external" href="https://github.com/jschuel/migYOLO">migYOLO git repo page</a></p>
+</section>
 </section>
 
 

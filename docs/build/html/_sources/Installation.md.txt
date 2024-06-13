@@ -1,4 +1,8 @@
-# Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week. 
+# Installation
+
+We have successully tested migYOLO with python 3.8, 3.9, 3.10, 3.11, and 3.12. **As of June 12th, 2024, data is not yet available. Page will be updated once data is available (hopefully within a week)**
+
+## Instructions
 
 1. Clone the migYOLO repository
 ```sh
@@ -7,7 +11,7 @@ git clone https://github.com/jschuel/migYOLO.git
 or
 
 ```sh
-git@github.com:jschuel/migYOLO.git
+git clone git@github.com:jschuel/migYOLO.git
 ```
 
 2. Set up a virtual environment with `python>=3.8`. If you use Anaconda, you can do something like
@@ -35,7 +39,7 @@ This will install migYOLO and all necessary packages **except** PyTorch and Ultr
 pip install ultralytics
 ```
 
-*Update (June 12th): Data is currently unavailable so these steps will not work. I anticipate data to be available within a week.*
+**Update (June 12th): Data is currently unavailable so these steps will not work. I anticipate data to be available within a week.**
 
 6. Download `data_and_models.zip` (*link coming soon*) and move it to `migYOLO/migYOLO` (once we have a non Google Drive server to store our data, this step will be automated with `wget` statements in `setup_environment.sh`):
 ```sh

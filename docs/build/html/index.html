@@ -46,9 +46,13 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pretrained%20YOLO%20models.html">Pretrained YOLO models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analyzing%20outputs.html">Analyzing Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
 </ul>
 
         </div>
@@ -80,14 +84,26 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#what-does-this-pipeline-do">What does this pipeline do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#what-does-this-package-include">What does this package include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#using-the-package">Using the package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html#instructions">Instructions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Automated%20Preannotations.html#instructions">Instructions:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Automated%20Preannotations.html#general-usage">General usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Pretrained%20YOLO%20models.html">Pretrained YOLO models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analyzing%20outputs.html">Analyzing Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
 </ul>
 </div>
 </section>
@@ -95,63 +111,6 @@
 <h1>migYOLO v1.0.0<a class="headerlink" href="#migyolo-v1-0-0" title="Link to this heading"></a></h1>
 <p>migYOLO is a package containing tools for using the YOLOv8-based processing and rare event search analysis pipeline for CMOS camera data from the MIGDAL experiment (<a class="reference external" href="https://arxiv.org/abs/2406.07538">paper preprint here</a>). This package has GPU support through PyTorch.</p>
 <img alt="Object detection" class="align-center" src="_images/object_detect.gif" />
-<section id="getting-started-successfully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12">
-<h2>Getting started (successfully tested with Python 3.8, 3.9, 3.10, 3.11, and 3.12)<a class="headerlink" href="#getting-started-successfully-tested-with-python-3-8-3-9-3-10-3-11-and-3-12" title="Link to this heading"></a></h2>
-<ol class="loweralpha">
-<li><p>Clone the repository:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jschuel/migYOLO.git
-</pre></div>
-</div>
-</li>
-</ol>
-<p>or:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git@github.com:jschuel/migYOLO.git
-</pre></div>
-</div>
-<ol class="loweralpha" start="2">
-<li><dl class="simple">
-<dt>Set up a virtual environment with <code class="docutils literal notranslate"><span class="pre">python&gt;=3.8</span></code>. If you use Anaconda, you can do something like::</dt><dd><p>conda create -n migYOLO python=3.10
-conda activate migYOLO</p>
-</dd>
-</dl>
-</li>
-<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">migYOLO/</span></code> where the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file is and run:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-</ol>
-<p>This will install migYOLO and all necessary packages <strong>except</strong> PyTorch and Ultralytics’ YOLOv8.</p>
-<ol class="loweralpha" start="4">
-<li><p>Follow the instructions on the installation guide of the front page of the <a class="reference external" href="https://pytorch.org/">PyTorch website</a> to install PyTorch. The “compute platform” row allows you to select the relevant platform for your GPU or “CPU only” if you do not have a compatible GPU.</p></li>
-<li><p>Install Ultralytics’ YOLOv8 package with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
-</pre></div>
-</div>
-</li>
-<li><p>Download <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code> (link coming soon) and move it to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO</span></code> (once we have a non-Google Drive server to store our data, this step will be automated with <code class="docutils literal notranslate"><span class="pre">wget</span></code> statements in <code class="docutils literal notranslate"><span class="pre">setup_environment.sh</span></code>)::</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>/path/to/data_and_models.zip<span class="w"> </span>/path/to/migYOLO/migYOLO/
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Make sure you replace both instances of <code class="docutils literal notranslate"><span class="pre">/path/to/</span></code> with the correct paths on your filesystem. <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code> contains the example image data used to get started with this package as well as two pretrained YOLO models called <code class="docutils literal notranslate"><span class="pre">base.pt</span></code> and <code class="docutils literal notranslate"><span class="pre">augment.pt</span></code>. These are the base and augment models described in the <a class="reference external" href="https://arxiv.org/abs/2406.07538">paper</a>.</p>
-<ol class="loweralpha" start="7">
-<li><p>In <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO</span></code> run <code class="docutils literal notranslate"><span class="pre">setup_environment.sh</span></code> with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>setup_environment.sh
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Running this command will (1) unzip <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code>, (2) move all of its contents to their appropriate directories, and (3) remove <code class="docutils literal notranslate"><span class="pre">data_and_models.zip</span></code>.</p>
-<ol class="loweralpha simple" start="8">
-<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory and first run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">downsample.py</span></code> and then <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">runYOLO.py</span></code>. If both of these run, then everything was installed correctly! If you run into issues, please report them.</p></li>
-</ol>
-</section>
-<section id="usage-coming-soon">
-<h2>Usage (Coming soon)<a class="headerlink" href="#usage-coming-soon" title="Link to this heading"></a></h2>
-<p>Usage instructions will be available soon.</p>
-</section>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
