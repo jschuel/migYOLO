@@ -28,6 +28,6 @@ yolo(infile = downsample_file,
      calibration_file = conf['calibration_file'],
      png_threshold = conf['png_threshold'],
      png_saturation = conf['png_saturation'],
-     remove_downsample = False, #When running a larger script we often set this to True
+     remove_downsample = True, #When running a larger script we often set this to True
      save_pixels = False,
      migdal_cut = conf['migdal_cut'])

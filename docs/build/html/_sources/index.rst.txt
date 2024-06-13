@@ -18,6 +18,7 @@ Welcome to migYOLO's documentation!
    Evaluating yolo
    Analyzing outputs
    Benchmark guide
+   Live display
 
 migYOLO v1.0.0
 ===============

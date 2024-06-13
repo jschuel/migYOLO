@@ -150,30 +150,32 @@ class yolo:
         else:
             '''If we don't perform a Migdal search, self.comb needs to be None'''
             self.comb = None
-            
-        if save_pixels:
-            self.outpath = outpath+'/with_pixel_hits/'
-        else:
-            '''Remove pixel-level info if we don't want to save pixels'''
-            self.data = self.data[[col for col in self.data if self.data[col].dtype != 'O']]
-            self.outpath = outpath+'/without_pixel_hits/'
-
-        if len(self.data) > 0:
-            if not os.path.exists(self.outpath):
-                os.makedirs(self.outpath)
-            self.data.to_feather(self.outpath+outfilename)
-            print("SUCCESS: YOLO outputs saved to %s\n"%(self.outpath+outfilename))
-            if not os.path.exists(self.outpath+'/migdal_candidates/'):
-                os.makedirs(self.outpath+'/migdal_candidates/')
-            if self.comb is not None:
-                print("Migdal candidate found! Saved to %s"%(self.outpath+'/migdal_candidates/'+outfilename))
-                '''Need to reset index if we save as feather'''
-                self.comb.index = [i for i in range(0,len(self.comb))]
-                self.comb.to_feather(self.outpath+'/migdal_candidates/'+outfilename)
+        if outpath is not None: #save data if outpath is not None
+            if outfilename is None:
+                raise ValueError("Outfile was specified, so outfilename must also be specified, i.e. out.feather") 
+            if save_pixels:
+                self.outpath = outpath+'/with_pixel_hits/'
             else:
-                print("No Migdal candidates found with the input migdal_cut.")
-        else:
-            print("File empty, didn't write")
+                '''Remove pixel-level info if we don't want to save pixels'''
+                self.data = self.data[[col for col in self.data if self.data[col].dtype != 'O']]
+                self.outpath = outpath+'/without_pixel_hits/'
+
+            if len(self.data) > 0:
+                if not os.path.exists(self.outpath):
+                    os.makedirs(self.outpath)
+                self.data.to_feather(self.outpath+outfilename)
+                print("SUCCESS: YOLO outputs saved to %s\n"%(self.outpath+outfilename))
+                if not os.path.exists(self.outpath+'/migdal_candidates/'):
+                    os.makedirs(self.outpath+'/migdal_candidates/')
+                if self.comb is not None:
+                    print("Migdal candidate found! Saved to %s"%(self.outpath+'/migdal_candidates/'+outfilename))
+                    '''Need to reset index if we save as feather'''
+                    self.comb.index = [i for i in range(0,len(self.comb))]
+                    self.comb.to_feather(self.outpath+'/migdal_candidates/'+outfilename)
+                else:
+                    print("No Migdal candidates found with the input migdal_cut.")
+            else:
+                print("File empty, didn't write")
 
         if remove_downsample and isinstance(infile, str):
             os.remove(infile)

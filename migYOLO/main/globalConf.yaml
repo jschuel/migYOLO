@@ -1,5 +1,5 @@
 yoloConf: #Configuration settings for running YOLO
-  model: '../models/augment.pt' #Filepath of pretrained YOLO model. Package comes with base.pt and augment.pt
+  model: '../models/base.pt' #Filepath of pretrained YOLO model. Package comes with base.pt and augment.pt
   calibration_file: '../data/calibration_files/test_calibration.npy' #Intensity to energy calibration file
   vignetting_map: '../data/calibration_files/test_map.pkl' #Vignetting map file
   downsample_path: '../data/downsampled_images' #Path for downsampled images
@@ -8,9 +8,10 @@ yoloConf: #Configuration settings for running YOLO
   remove_downsample: True #If true, pipeline.yolo deletes downsampled images upon successful completion
   png_threshold: 1.4 #Threshold for PNGs that are passed into YOLO. Currently using a log base 10 scale for this
   png_saturation: 4 #Saturation limit for PNGs that are passed into YOLO (log scale)
-  migdal_cut: 'NR_energy > 60 & centroid_dist < 6' #Quantities that can be used: 'ER_energy', 'NR_energy', 'ER_length', 'NR_length', 'IoU', and 'centroid_dist'. Expressions accepted by cut strings
-  	      		      		      	   #include '&', '|', '==', '>=', '<=', '>', and '<'. An expression like the following is allowed:
-						   '((3 < ER_energy < 6) & (600 >= NR_energy > 40)) | (ER_length > 3.5 & IoU > 0)'   
+  migdal_cut: 'NR_energy > 60 & centroid_dist < 6'
+#For migdal_cut, quantities that can be used: 'ER_energy', 'NR_energy', 'ER_length', 'NR_length', 'IoU', and 'centroid_dist'. Expressions accepted by cut strings
+#include '&', '|', '==', '>=', '<=', '>', and '<'. An expression like the following is allowed:
+#'((3 < ER_energy < 6) & (600 >= NR_energy > 40)) | (ER_length > 3.5 & IoU > 0)'   
   
 downsample: #Filepaths of relevance for downsampling
   dark_file: '../data/dark/sample_master_dark.npy'
