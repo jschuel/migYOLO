@@ -15,7 +15,7 @@ downsample:
   dark_file: '../data/dark/sample_master_dark.npy'
   data_dir: '../data/benchmark/random_benchmark_image' #input data directory
   batch_size: 1 #Size of batches for downsampling
-  num_workers: 2 #number of parallel jobs for batch loading in downsample.py
+  num_workers: 3 #number of parallel jobs for batch loading in downsample.py
   outpath: '../data/benchmark/downsampled_images' #outpath for downsampled images
   GPU: True #set to True if using GPU else False
   png_dir: '../data/benchmark/pngs'
