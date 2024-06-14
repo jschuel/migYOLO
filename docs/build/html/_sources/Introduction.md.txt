@@ -14,7 +14,7 @@ Chapter III of the paper goes into full detail of what the pipeline does. In sho
 
 ![yolo](figures/yolo_apply.png)
 
-4. Performs a physics analysis on each bounding box identified as either a nuclear recoil, electron recoil, or proton. The quantities extracted are the track's energy, length, axial angle (for protons), and vector angle (after applying head/tail corrections) for electron recoils and nuclear recoils
+4. Performs a physics analysis on each bounding box identified as either a nuclear recoil, electron recoil, or proton. The quantities extracted are the track's energy, length, axial angle, and for electron reocils and nuclear recoils only, vector angle (after applying rudimentary head/tail corrections).
 
 5. Each bounding box's extracted physics quantities, bounding box coordinates, classification ID, and classification confidence score are added to a bounding box-indexed Pandas dataframe. The dataframe corresponding to the entire batch of 200 images is saved.
 
@@ -28,11 +28,9 @@ Chapter III of the paper goes into full detail of what the pipeline does. In sho
 
 3. [Label Studio integration](https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html) for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the `migYOLO/migYOLO/LabelStudio/Example/sample_pngs` directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.**
 
-4. (Coming soon): tutorials for training YOLO
+4. Scripts to run the pipeline on 1,000 preselected images
 
-5. Scripts to run the pipeline on 1,000 preselected images
-
-6. (coming soon) Jupyter notebooks to analyze YOLO's output
+5. Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images
 
 ## Using the package
-Each entry in the table of contents can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the [migYOLO git repo page](https://github.com/jschuel/migYOLO)
+Each entry in the table of contents to the left can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the [migYOLO git repo page](https://github.com/jschuel/migYOLO)

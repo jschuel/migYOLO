@@ -1,8 +1,8 @@
 # Setting up automated preannotations
 
-migYOLO interfaces with the open-source [Label Studio labeling software](https://labelstud.io/). This tutorial runs through how to import a pre-trained YOLO model to generate automated pre-annotations of tracks as is demonstrated in Section III B and Figure 5 of [our paper](https://arxiv.org/abs/2406.07538).
+migYOLO interfaces with the open-source [Label Studio labeling software](https://labelstud.io/). This tutorial runs through how to import a pre-trained YOLO model to generate automated pre-annotations of tracks as is demonstrated in Section III B and Figure 5 of [our paper](https://arxiv.org/abs/2406.07538). **Note: This Section isn't needed for evaluating our pretrained YOLO models, so feel free to skip it if you aren't interested in efficiently labeling real data for training. If you are interested in generating pre-annotations from a trained YOLOv8 model, then please follow the instructions below. While these instructions use MIGDAL data, this procedure is general and should work with any YOLOv8 object detection task.**
 
-## Instructions:
+## Instructions
 
 1. In a terminal window type `label-studio`. A browser window will pop up. Either sign up or log into your existing account if you have one.
 

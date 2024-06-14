@@ -13,10 +13,8 @@ Welcome to migYOLO's documentation!
    Introduction
    Installation
    Automated Preannotations
-   Pretrained YOLO models
    Training yolo
    Evaluating yolo
-   Analyzing outputs
    Benchmark guide
    Live display
 

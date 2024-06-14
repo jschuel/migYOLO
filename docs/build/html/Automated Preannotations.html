@@ -21,7 +21,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Usage" href="Usage.html" /> 
+    <link rel="next" title="Training YOLOv8" href="Training%20yolo.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,13 +47,16 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation (successully tested with python 3.8, 3.9, 3.10, 3.11, and 3.12). Update (June 12th, 2024): Data is not yet available but is coming soon. I expect it to be available within a week.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up automated preannotations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-usage">General usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Live%20display.html">Live Display</a></li>
 </ul>
 
         </div>
@@ -81,9 +85,9 @@
              
   <section id="setting-up-automated-preannotations">
 <h1>Setting up automated preannotations<a class="headerlink" href="#setting-up-automated-preannotations" title="Link to this heading"></a></h1>
-<p>migYOLO interfaces with the open-source <a class="reference external" href="https://labelstud.io/">Label Studio labeling software</a>. This tutorial runs through how to import a pre-trained YOLO model to generate automated pre-annotations of tracks as is demonstrated in Section III B and Figure 5 of <a class="reference external" href="https://arxiv.org/abs/2406.07538">our paper</a>.</p>
+<p>migYOLO interfaces with the open-source <a class="reference external" href="https://labelstud.io/">Label Studio labeling software</a>. This tutorial runs through how to import a pre-trained YOLO model to generate automated pre-annotations of tracks as is demonstrated in Section III B and Figure 5 of <a class="reference external" href="https://arxiv.org/abs/2406.07538">our paper</a>. <strong>Note: This Section isn’t needed for evaluating our pretrained YOLO models, so feel free to skip it if you aren’t interested in efficiently labeling real data for training. If you are interested in generating pre-annotations from a trained YOLOv8 model, then please follow the instructions below. While these instructions use MIGDAL data, this procedure is general and should work with any YOLOv8 object detection task.</strong></p>
 <section id="instructions">
-<h2>Instructions:<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>In a terminal window type <code class="docutils literal notranslate"><span class="pre">label-studio</span></code>. A browser window will pop up. Either sign up or log into your existing account if you have one.</p></li>
 <li><p>Once you log in there should be a button that says <code class="docutils literal notranslate"><span class="pre">Create</span></code>. Click on this button to create a labeling project. A pop-up window will open where you can enter your Project Name and description. Click on the <code class="docutils literal notranslate"><span class="pre">Labeling</span> <span class="pre">Setup</span></code> tab and then click <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">template</span></code>.</p></li>
@@ -144,7 +148,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Training%20yolo.html" class="btn btn-neutral float-right" title="Training YOLOv8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

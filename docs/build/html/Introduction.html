@@ -54,11 +54,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Pretrained%20YOLO%20models.html">Pretrained YOLO models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Analyzing%20outputs.html">Analyzing Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Live%20display.html">Live Display</a></li>
 </ul>
 
         </div>
@@ -98,7 +97,7 @@
 </ol>
 <p><img alt="yolo" src="_images/yolo_apply.png" /></p>
 <ol class="arabic simple" start="4">
-<li><p>Performs a physics analysis on each bounding box identified as either a nuclear recoil, electron recoil, or proton. The quantities extracted are the track’s energy, length, axial angle (for protons), and vector angle (after applying head/tail corrections) for electron recoils and nuclear recoils</p></li>
+<li><p>Performs a physics analysis on each bounding box identified as either a nuclear recoil, electron recoil, or proton. The quantities extracted are the track’s energy, length, axial angle, and for electron reocils and nuclear recoils only, vector angle (after applying rudimentary head/tail corrections).</p></li>
 <li><p>Each bounding box’s extracted physics quantities, bounding box coordinates, classification ID, and classification confidence score are added to a bounding box-indexed Pandas dataframe. The dataframe corresponding to the entire batch of 200 images is saved.</p></li>
 <li><p>Each unique electron recoil – nuclear recoil present in a given frame that satisfies user defined Migdal skim criteria is separately saved in a electronRecoil-nuclearRecoil pair-indexed file.</p></li>
 </ol>
@@ -109,14 +108,13 @@
 <li><p>Pretrained YOLO files <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/base.pt</span></code> and <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/augment.pt</span></code> that correspond to the Base and Augment training samples described in Table I and Table III of the paper, respectively.</p></li>
 <li><p>Benchmark scripts in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark/</span></code> to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)</p></li>
 <li><p><a class="reference external" href="https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html">Label Studio integration</a> for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example/sample_pngs</span></code> directory are included for convenience. <strong>Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.</strong></p></li>
-<li><p>(Coming soon): tutorials for training YOLO</p></li>
 <li><p>Scripts to run the pipeline on 1,000 preselected images</p></li>
-<li><p>(coming soon) Jupyter notebooks to analyze YOLO’s output</p></li>
+<li><p>Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images</p></li>
 </ol>
 </section>
 <section id="using-the-package">
 <h2>Using the package<a class="headerlink" href="#using-the-package" title="Link to this heading"></a></h2>
-<p>Each entry in the table of contents can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the <a class="reference external" href="https://github.com/jschuel/migYOLO">migYOLO git repo page</a></p>
+<p>Each entry in the table of contents to the left can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the <a class="reference external" href="https://github.com/jschuel/migYOLO">migYOLO git repo page</a></p>
 </section>
 </section>
 

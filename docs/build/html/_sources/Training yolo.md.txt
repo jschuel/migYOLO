@@ -1,2 +1,2 @@
 # Training YOLOv8
-(Coming soon)
+We train using Ultralytics' YOLOv8 package, so refer to the [Ultralytics documentation(https://docs.ultralytics.com/datasets/detect/) for formatting your data to train custom YOLOv8 object detection models. When exporting labeled data from Label-Studio, choosing the `YOLO` format will automatically generate label text files that are compatible for YOLOv8.

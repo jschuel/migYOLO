@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analyzing Outputs" href="Analyzing%20outputs.html" />
+    <link rel="next" title="Benchmarking processing speed" href="Benchmark%20guide.html" />
     <link rel="prev" title="Training YOLOv8" href="Training%20yolo.html" /> 
 </head>
 
@@ -50,9 +50,15 @@
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluating YOLO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Analyzing%20outputs.html">Analyzing Outputs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluating YOLO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pretrained-yolo-weights-files">Pretrained YOLO weights files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globalconf-yaml">globalConf.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analyzing-outputs">Analyzing outputs</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Live%20display.html">Live Display</a></li>
 </ul>
 
         </div>
@@ -81,7 +87,42 @@
              
   <section id="evaluating-yolo">
 <h1>Evaluating YOLO<a class="headerlink" href="#evaluating-yolo" title="Link to this heading"></a></h1>
-<p>(Coming soon)</p>
+<p>The source code for our pipeline can be found in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/pipeline/pipeline.py</span></code>. Tutorials and scripts for processing images and evaluating YOLO are in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main</span></code>.</p>
+<section id="pretrained-yolo-weights-files">
+<h2>Pretrained YOLO weights files<a class="headerlink" href="#pretrained-yolo-weights-files" title="Link to this heading"></a></h2>
+<p>Pretrained weights files are available at</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/data/models/base.pt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/data/models/augment.pt</span></code></p></li>
+</ul>
+<p>The relative paths of these weights files is set in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main/globalConf.yaml</span></code>. If you use a different set of model weights than these, make sure you set the appropriate <code class="docutils literal notranslate"><span class="pre">model</span></code> path in <code class="docutils literal notranslate"><span class="pre">globalConf.yaml</span></code>.</p>
+</section>
+<section id="globalconf-yaml">
+<h2>globalConf.yaml<a class="headerlink" href="#globalconf-yaml" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main/globalConf.yaml</span></code> is an editable master configuration file for evaluating YOLO.
+<img alt="globalConf" src="_images/globalConf.png" /></p>
+<p>Some notes that might not be clear in the comments in the file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> is the path (relative to globalConfig.yaml) to a pretrained YOLOv8 model. If you train your own, make sure you set the relative path correctly</p></li>
+<li><p>migYOLO comes packaged with only a single <code class="docutils literal notranslate"><span class="pre">calibration_file</span></code> and <code class="docutils literal notranslate"><span class="pre">vignetting_map</span></code> file. During each Fe-55 calibration run (MIGDAL performs several of these a day), new calibration and vignetting map files are generated. During a given D-D generator run, we calibrate energies using nearest-in-time calibration file and vignetting map file that were recorded with the same MIGDAL detector settings as the D-D run. The energy calibrations when evaluating YOLO on the 1,000 sample images included with this package will therefore not be as accurate those performed in our <a class="reference external" href="https://arxiv.org/abs/2406.07538">paper</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove_downsample</span></code> is only relevant if you specify an outpath for the <code class="docutils literal notranslate"><span class="pre">downsample()</span></code> function in <code class="docutils literal notranslate"><span class="pre">migYOLO.pipeline.pipeline</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">png_threshold</span></code> and <code class="docutils literal notranslate"><span class="pre">png_saturation</span></code> should not be changed if you’re using one of the two pre-trained YOLO models (<code class="docutils literal notranslate"><span class="pre">base.pt</span></code> or <code class="docutils literal notranslate"><span class="pre">augment.pt</span></code>) packaged with migYOLO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">migdal_cut</span></code> uses the syntax of <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html">Pandas’ query function</a> and can be adjusted however you like, provided you use columns present in the YOLO-processed Migdal candidate Dataframes (see the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main/Migdal_skim_visualization.ipynb</span></code> Jupyter Notebook tutorial for how to look up these columns). When processing the images with YOLO, any frames with electron recoil - nuclear recoil pairs satisfying ‘migdal_cut’ will be saved as output.</p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
+<p>To get a feel for how to use migYOLO to process images and use YOLO to identify tracks, we would suggest the following procedure:</p>
+<ol class="arabic simple">
+<li><p>Work through the Jupyter notebook tutorial at <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main/Intro_tutorial.ipynb</span></code>. This step-by-step guide uses the high-level migYOLO.pipeline.pipeline modules to perform these tasks.</p></li>
+<li><p>Generate YOLO output files by navigating to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main</span></code> (if you aren’t already there) and running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">process_images.py</span></code>. I would recommend running this twice; once with the model in <code class="docutils literal notranslate"><span class="pre">globalConf.yaml</span></code> being <code class="docutils literal notranslate"><span class="pre">../models/base.pt</span></code> and the other time with <code class="docutils literal notranslate"><span class="pre">../models/augment.pt</span></code>. Output files will be automatically generated at the <code class="docutils literal notranslate"><span class="pre">outpath</span></code> subfield specified within the <code class="docutils literal notranslate"><span class="pre">yoloConf</span></code> field of <code class="docutils literal notranslate"><span class="pre">globalConf.yaml</span></code>.</p></li>
+<li><p>Work through the Jupyter notebook tutorial at <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/main/Migdal_skim_visualization.ipynb</span></code>. This will show you how to visualize YOLO’s outputs on 2D Migdal candidates.</p></li>
+</ol>
+</section>
+<section id="analyzing-outputs">
+<h2>Analyzing outputs<a class="headerlink" href="#analyzing-outputs" title="Link to this heading"></a></h2>
+<p>The output files generated from <code class="docutils literal notranslate"><span class="pre">process_images.py</span></code> above can be used for general purpose analyses. The two previously mentioned jupyter notebooks show some simple examples.</p>
+</section>
 </section>
 
 
@@ -89,7 +130,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Training%20yolo.html" class="btn btn-neutral float-left" title="Training YOLOv8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Analyzing%20outputs.html" class="btn btn-neutral float-right" title="Analyzing Outputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Benchmark%20guide.html" class="btn btn-neutral float-right" title="Benchmarking processing speed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
