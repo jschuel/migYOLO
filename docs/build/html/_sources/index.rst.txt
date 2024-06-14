@@ -16,7 +16,7 @@ Welcome to migYOLO's documentation!
    Training yolo
    Evaluating yolo
    Benchmark guide
-   Live display
+   Live display (coming soon)
 
 migYOLO v1.0.0
 ===============
@@ -27,9 +27,3 @@ migYOLO is a package containing tools for using the YOLOv8-based processing and 
    :alt: Object detection
    :align: center
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

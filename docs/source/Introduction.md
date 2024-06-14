@@ -24,13 +24,13 @@ Chapter III of the paper goes into full detail of what the pipeline does. In sho
 
 1. Pretrained YOLO files `migYOLO/migYOLO/models/base.pt` and `migYOLO/migYOLO/models/augment.pt` that correspond to the Base and Augment training samples described in Table I and Table III of the paper, respectively.
 
-2. Benchmark scripts in `migYOLO/migYOLO/benchmark/` to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)
+2. [Label Studio integration](https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html) for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the `migYOLO/migYOLO/LabelStudio/Example/sample_pngs` directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.**
 
-3. [Label Studio integration](https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html) for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the `migYOLO/migYOLO/LabelStudio/Example/sample_pngs` directory are included for convenience. **Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.**
+3. Scripts to run the pipeline on 1,000 preselected images
 
-4. Scripts to run the pipeline on 1,000 preselected images
+4. Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images. These scripts show some simple analyses of YOLO's output.
 
-5. Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images
+5. Benchmark scripts in `migYOLO/migYOLO/benchmark/` to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)
 
 ## Using the package
 Each entry in the table of contents to the left can be treated as a tutorial of a particular feature of migYOLO. Explore at your leisure and please ask any questions or report any issues you find on the [migYOLO git repo page](https://github.com/jschuel/migYOLO)

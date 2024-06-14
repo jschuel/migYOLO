@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Live Display" href="Live%20display.html" />
+    <link rel="next" title="Live Display" href="Live%20display%20%28coming%20soon%29.html" />
     <link rel="prev" title="Evaluating YOLO" href="Evaluating%20yolo.html" /> 
 </head>
 
@@ -51,8 +51,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Automated%20Preannotations.html">Setting up automated preannotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Benchmarking processing speed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Live%20display.html">Live Display</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Benchmarking processing speed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-benchmark">Running the benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Live%20display%20%28coming%20soon%29.html">Live Display</a></li>
 </ul>
 
         </div>
@@ -82,6 +86,25 @@
   <section id="benchmarking-processing-speed">
 <h1>Benchmarking processing speed<a class="headerlink" href="#benchmarking-processing-speed" title="Link to this heading"></a></h1>
 <p><strong>Note: <a class="reference external" href="https://www.gnu.org/software/screen/">GNU Screen</a> is required to run the benchmark script.</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark/</span></code> directory has a sample benchmark script called <code class="docutils literal notranslate"><span class="pre">runBenchmark.sh</span></code> that can be used to generate the output shown in Fig. 7 of the <a class="reference external" href="https://arxiv.org/abs/2406.07538">paper</a>.</p>
+<section id="benchmarks">
+<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading"></a></h2>
+<p>The highlighted fields of <code class="docutils literal notranslate"><span class="pre">benchmarkConf.yaml</span></code> shown below can be adjusted for various tests:</p>
+<p><img alt="bconf" src="_images/benchmarkConf.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data_dir:</span> <span class="pre">../data/benchmark/random_benchmark_image</span></code> corresponds to the “Typical run” entry in the legend of the figure below</p></li>
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">data_dir:</span> <span class="pre">../data/benchmark/high_occupancy_image</span></code> corresponds to the “High occupancy run” entry in the legend of the figure below</p></li>
+<li><p>The defaults of <code class="docutils literal notranslate"><span class="pre">batch_size:</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">num_workers:</span> <span class="pre">3</span></code> are the values used for benchmarking the processing speed on the MIGDAL readout PC</p></li>
+</ul>
+<p><img alt="fig7" src="_images/fig7.png" /></p>
+</section>
+<section id="running-the-benchmark">
+<h2>Running the benchmark<a class="headerlink" href="#running-the-benchmark" title="Link to this heading"></a></h2>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark</span></code> and run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">runBenchmark.sh</span></code>. The script will prompt you on how many images you would like to benchmark. After running the script, a directory called <code class="docutils literal notranslate"><span class="pre">timestamps/</span></code> will generate text files containing timestamps. The elapsed time between two successive timestamp files is the time it took to process 200 frames. These timestamp files are what were used to create the figure above.</p>
+<p><strong>Two important notes</strong></p>
+<p><strong>1. As stated above, GNU screen is required to run <code class="docutils literal notranslate"><span class="pre">runBenchmark.sh</span></code>.</strong></p>
+<p><strong>2. Each time <code class="docutils literal notranslate"><span class="pre">runBenchmark.sh</span></code> is run, the <code class="docutils literal notranslate"><span class="pre">timestamps/</span></code> directory is deleted. The explicit code for generating the figure above is also not included here.</strong></p>
+</section>
 </section>
 
 
@@ -89,7 +112,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Evaluating%20yolo.html" class="btn btn-neutral float-left" title="Evaluating YOLO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Live%20display.html" class="btn btn-neutral float-right" title="Live Display" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Live%20display%20%28coming%20soon%29.html" class="btn btn-neutral float-right" title="Live Display" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

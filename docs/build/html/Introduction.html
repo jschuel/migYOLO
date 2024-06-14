@@ -57,7 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Training%20yolo.html">Training YOLOv8</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluating%20yolo.html">Evaluating YOLO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Benchmark%20guide.html">Benchmarking processing speed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Live%20display.html">Live Display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Live%20display%20%28coming%20soon%29.html">Live Display</a></li>
 </ul>
 
         </div>
@@ -106,10 +106,10 @@
 <h2>What does this package include<a class="headerlink" href="#what-does-this-package-include" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Pretrained YOLO files <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/base.pt</span></code> and <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/models/augment.pt</span></code> that correspond to the Base and Augment training samples described in Table I and Table III of the paper, respectively.</p></li>
-<li><p>Benchmark scripts in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark/</span></code> to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)</p></li>
 <li><p><a class="reference external" href="https://migyolo.readthedocs.io/en/latest/Automated%20Preannotations.html">Label Studio integration</a> for automated preannotations. These instructions guide you through the process of plugging a pretrained YOLOv8 model into the backend of label-studio to automatically generate bounding box labels on training images input into Label Studio. Some sample images of MIGDAL tracks are included in the <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/LabelStudio/Example/sample_pngs</span></code> directory are included for convenience. <strong>Note: The Label Studio functionality can be applied for your own projects that are completely independent of the MIGDAL experiment. After following the procedure in this link it should be clear how to adjust it for your purposes.</strong></p></li>
 <li><p>Scripts to run the pipeline on 1,000 preselected images</p></li>
-<li><p>Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images</p></li>
+<li><p>Jupyter notebook tutorials for (1) downsampling images and processing them with YOLO, and (2) visualizing the output of YOLO run on the 1,000 preselected images. These scripts show some simple analyses of YOLO’s output.</p></li>
+<li><p>Benchmark scripts in <code class="docutils literal notranslate"><span class="pre">migYOLO/migYOLO/benchmark/</span></code> to test the processing speed of the end-to-end pipeline (Fig. 7 in the paper)</p></li>
 </ol>
 </section>
 <section id="using-the-package">
