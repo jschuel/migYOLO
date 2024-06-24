@@ -206,36 +206,71 @@ class yolo:
         '''Bounding box analysis'''
         for i,gf in enumerate(self.ims): # Loop through images
             
-            boxes = results[i].boxes.data.cpu().numpy() #Array contains bounding box coordinates with prediction of species and associated probabilities. We move it to the CPU for the rest of the analysis                          
-            for k, box in enumerate(boxes): # Loops through each object in image[i]
-                tracks_in_frame.append(len(boxes))
-                ys = (box[1:4:2]).astype('int')
-                xs = (box[0:3:2]).astype('int')
-                cropgf = torch.tensor(gf[ys[0]:ys[1],xs[0]:xs[1]]).to_sparse()
+            boxes = results[i].boxes.data.cpu().numpy() #Array contains bounding box coordinates with prediction of species and associated probabilities. We move it to the CPU for the rest of the analysis
+            '''Grab all tracks in events without storms'''
+            if 8 not in boxes[:,5]:
+                for box in boxes: # Loops through each object in image[i]
+                    tracks_in_frame.append(len(boxes))
+                    ys = (box[1:4:2]).astype('int')
+                    xs = (box[0:3:2]).astype('int')
+                    cropgf = torch.tensor(gf[ys[0]:ys[1],xs[0]:xs[1]]).to_sparse()
                 
-                rowgf,colgf = cropgf.indices()
-                colgf = colgf.numpy()+xs[0]
-                rowgf = rowgf.numpy()+ys[0]
-                cgauss = cropgf.values().numpy()
+                    rowgf,colgf = cropgf.indices()
+                    colgf = colgf.numpy()+xs[0]
+                    rowgf = rowgf.numpy()+ys[0]
+                    cgauss = cropgf.values().numpy()
                 
-                colsgauss.append(colgf)
-                rowsgauss.append(rowgf)
-                colmax.append(xs.max())
-                colmin.append(xs.min())
-                rowmax.append(ys.max())
-                rowmin.append(ys.min())
-                cgausses.append(cgauss)
+                    colsgauss.append(colgf)
+                    rowsgauss.append(rowgf)
+                    colmax.append(xs.max())
+                    colmin.append(xs.min())
+                    rowmax.append(ys.max())
+                    rowmin.append(ys.min())
+                    cgausses.append(cgauss)
                 
-                length, theta, HCF = compute_SVD_length_angle_and_HCF(colgf,rowgf,cgauss,box[5])
+                    length, theta, HCF = compute_SVD_length_angle_and_HCF(colgf,rowgf,cgauss,box[5])
 
-                true_lengths.append(length)
-                true_angles.append(theta) #angle rescaled to orignal dimensions after head/tail
-                HCFs.append(HCF) #HCF after head/tail correction
+                    true_lengths.append(length)
+                    true_angles.append(theta) #angle rescaled to orignal dimensions after head/tail
+                    HCFs.append(HCF) #HCF after head/tail correction
 
-                idxs.append(i) #original image index
-                clfs.append(box[5]) #bounding box classification species, e.g. ER, NR, alpha, spark
-                probs.append(box[4]) #confidence score associated with bounding box classification
-                                
+                    idxs.append(i) #original image index
+                    clfs.append(box[5]) #bounding box classification species, e.g. ER, NR, alpha, spark
+                    probs.append(box[4]) #confidence score associated with bounding box classification
+
+                    '''If there's a storm, only grab the storm because YOLO wasn't trained to grab individual tracks'''
+            else:
+                for box in boxes: # Loops through each object in image[i]
+                    if box[5] == 8:
+                        tracks_in_frame.append(len(boxes))
+                        ys = (box[1:4:2]).astype('int')
+                        xs = (box[0:3:2]).astype('int')
+                        cropgf = torch.tensor(gf[ys[0]:ys[1],xs[0]:xs[1]]).to_sparse()
+                
+                        rowgf,colgf = cropgf.indices()
+                        colgf = colgf.numpy()+xs[0]
+                        rowgf = rowgf.numpy()+ys[0]
+                        cgauss = cropgf.values().numpy()
+                
+                        colsgauss.append(colgf)
+                        rowsgauss.append(rowgf)
+                        colmax.append(xs.max())
+                        colmin.append(xs.min())
+                        rowmax.append(ys.max())
+                        rowmin.append(ys.min())
+                        cgausses.append(cgauss)
+                
+                        length, theta, HCF = compute_SVD_length_angle_and_HCF(colgf,rowgf,cgauss,box[5])
+
+                        true_lengths.append(length)
+                        true_angles.append(theta) #angle rescaled to orignal dimensions after head/tail
+                        HCFs.append(HCF) #HCF after head/tail correction
+
+                        idxs.append(i) #original image index
+                        clfs.append(box[5]) #bounding box classification species, e.g. ER, NR, alpha, spark
+                        probs.append(box[4]) #confidence score associated with bounding box classification
+                    else:
+                        continue
         '''Store information in pandas dataframe'''
         
         df = pd.DataFrame()
