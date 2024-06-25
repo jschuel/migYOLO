@@ -3,7 +3,7 @@
 # Function to download files using wget
 download_files() {
     for i in {1..5}; do
-	wget "https://lobogit.unm.edu/jschueler1/migYOLO/-/raw/main/migYOLO/data_and_models${i}.zip"
+	wget -q --show-progress "https://lobogit.unm.edu/jschueler1/migYOLO/-/raw/main/migYOLO/data_and_models${i}.zip"
     done
 }
 
