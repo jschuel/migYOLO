@@ -1,4 +1,5 @@
 # migYOLO v1.0.0
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12628437.svg)](https://doi.org/10.5281/zenodo.12628437)
 
 **Update (June 24th, 2024): Data is available (see Installation instructions in the [official documentation](https://migyolo.readthedocs.io/en/latest/))**
 
